@@ -4,14 +4,15 @@ public class Estudiante extends Persona {
 
 	private int estrato;
 	private double promedio;
-	public long valormatricula;
+	public double valormatricula;
 	int numerocreditosmatriculados;
+	long ingresos;
 	
-	public Estudiante(int cedula, String nombre, String direccion, int estrato, double promedio, long valormatricula) {
+	public Estudiante(int cedula, String nombre, String direccion, int estrato, double promedio, long ingresos) {
 		super(cedula, nombre, direccion);
 		this.estrato = estrato;
 		this.promedio = promedio;
-		this.valormatricula = valormatricula;
+		this.ingresos = ingresos;
 	}
 	
 	public int getEstrato() {
