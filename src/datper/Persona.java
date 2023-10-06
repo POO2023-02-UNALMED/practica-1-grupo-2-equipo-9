@@ -12,6 +12,7 @@ public class Persona {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		cantidadpersonas++;
+		///RegistroyMatricula.personas.add(nombre);
 	}
 	
 	public int getCedula() {
