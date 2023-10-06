@@ -13,7 +13,8 @@ public class Profesor extends Persona {
 	public void setTipoDeAfiliacion(String tda) {
 		this.tipodeafiliacion = tda;
 	}
-	public void setSalarion(long salario) {
+	public void setSalario (long salario) {
 		this.salario = salario;
 	}
+	
 }
