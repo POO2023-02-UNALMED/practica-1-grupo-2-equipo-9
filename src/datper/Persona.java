@@ -2,9 +2,9 @@ package datper;
 
 public class Persona {
 
-	public int cedula;
+	protected int cedula; //protected funciona para heredar
 	public String nombre;
-	public String direccion;
+	protected String direccion;
 		
 	public Persona(int cedula , String nombre, String direccion) {
 		this.cedula = cedula;
@@ -12,6 +12,20 @@ public class Persona {
 		this.direccion = direccion;
 	}
 	
-		
+	public int getCedula() {
+		return cedula;
+	}
+	
+	public void setCedula(int cedula) {
+		this.cedula = cedula;
+	}
+	
+	public String getDireccion() {
+		return direccion;
+	}
+	
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 }
 
