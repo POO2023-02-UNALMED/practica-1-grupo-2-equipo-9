@@ -5,31 +5,28 @@ public class RegistroyMatricula {
 	public String director;
 	private Persona[] personas;
 	
-	public Personas[] personas() {
+	public Persona[] personas() {
 		return personas;
 	}
 	
-	public  String controlMatriculayTarifas(Estudiante estudiante, int opcion) {
-		int estrat = estudiante.getEstrato();
+	public static String controlMatriculayTarifas(Estudiante estudiante, int opcion) {
 		if (opcion == 1) {
-			String matricula = "";
-			if (estrat <= 3) {
-				estudiante.valormatricula = 0;
-				matricula = "Matricula cero";
+			double valMatest = valorMatricula(estudiante);
+			if (valMatest == 0) {
+				estudiante.valormatricula = valMatest;
+				return "Usted posee matricula 0";
 			}
-			else if (estrat > 3){
-				double tasa = 1/2;
-				double matr = estrat*estudiante.ingresos*tasa;
-				String cadena = "Su matricula es: "+ matr;
-				estudiante.valormatricula = matr;
-				matricula = cadena;
+			else if (valMatest > 0){
+				String cadena = "Su matricula es: "+ valMatest + " por tanto no es beneficiaro de Matricula 0";
+				estudiante.valormatricula = valMatest;
+				return cadena;
 			}
-			return matricula;
 		}
 		else if (opcion == 2) {
-			if (estudiante.valormatricula != 0 && estudiante.valormatricula >= 1000000) {
+			double valMatest = valorMatricula(estudiante);
+			if (valMatest!= 0 && valMatest >= 100000) {
 				double fraccion = 1/3;
-				double valorFraccion = fraccion*estudiante.valormatricula;
+				double valorFraccion = fraccion*valMatest;
 				return "El valor de la fraccion es: "+ valorFraccion;
 			}
 			
@@ -40,6 +37,21 @@ public class RegistroyMatricula {
 		
 		
 		return "Su informacion ha sido cargada y generada";
-	}	
+	}
+	public static double valorMatricula(Estudiante estudiante) {
+		int estrat = estudiante.getEstrato();
+		double valorm = 0;
+		if (estrat <= 3 || estudiante.getPromedio()>= 4.5) {
+			valorm = 0;
+			return valorm;
+		}
+		else if (estrat > 3){
+			double tasa = 1/2;
+			valorm = estudiante.ingresos*tasa;
+			return valorm;
+		}
+		return valorm;
+	}
+	
 	
 }

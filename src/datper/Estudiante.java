@@ -7,6 +7,7 @@ public class Estudiante extends Persona {
 	public double valormatricula;
 	int numerocreditosmatriculados;
 	long ingresos;
+	boolean matriculacero;
 	
 	public Estudiante(int cedula, String nombre, String direccion, int estrato, double promedio, long ingresos) {
 		super(cedula, nombre, direccion);
