@@ -10,7 +10,7 @@ public class RegistroyMatricula {
 	
 	public static String controlMatriculayTarifas(Estudiante estudiante, int opcion) {
 		if (opcion == 1) {
-			double valMatest = valorMatricula(estudiante);
+			double valMatest = RegistroyMatricula.valorMatricula(estudiante);
 			if (valMatest == 0) {
 				estudiante.valormatricula = valMatest;
 				return "Usted posee matricula 0";
@@ -22,8 +22,8 @@ public class RegistroyMatricula {
 			}
 		}
 		else if (opcion == 2) {
-			double valMatest = valorMatricula(estudiante);
-			if (valMatest!= 0 && valMatest >= 100000) {
+			double valMatest = RegistroyMatricula.valorMatricula(estudiante);
+			if (valMatest!= 0 || valMatest >= 100000) {
 				double fraccion = 1/3;
 				double valorFraccion = fraccion*valMatest;
 				return "El valor de la fraccion es: "+ valorFraccion;
@@ -40,13 +40,19 @@ public class RegistroyMatricula {
 	public static double valorMatricula(Estudiante estudiante) {
 		int estrat = estudiante.getEstrato();
 		double prom = estudiante.getPromedio();
-		if (estrat <= 3 || prom>= 4.5) {
+		if (estrat <= 3) {
 			double valorm = 0;
+			estudiante.valormatricula = valorm;
+			return valorm;
+		}
+		else if (prom>= 4.5){
+			double valorm = 0;
+			estudiante.valormatricula = valorm;
 			return valorm;
 		}
 		else if (estrat > 3 || prom< 4.5){
-			double tasa = 1/2;
-			double valorm = estudiante.ingresos*tasa;
+			double valorm = estudiante.ingresos*0.5;
+			estudiante.valormatricula = valorm;
 			return valorm;
 		}
 		else {return 0;}

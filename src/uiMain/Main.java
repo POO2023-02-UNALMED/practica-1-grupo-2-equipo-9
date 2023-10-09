@@ -9,7 +9,7 @@ public class Main {
 		System.out.println(t);
 		System.out.println(estudiante1.getEstrato());
 		System.out.println(estudiante1.getPromedio());
-		String k = RegistroyMatricula.controlMatriculayTarifas(estudiante1, 2);
+		String k = RegistroyMatricula.controlMatriculayTarifas(estudiante1, 1);
 		System.out.println(k);
 	}
 }

@@ -6,10 +6,10 @@ public class Estudiante extends Persona {
 	private double promedio;
 	public double valormatricula;
 	int numerocreditosmatriculados;
-	long ingresos;
+	int ingresos;
 	boolean matriculacero;
 	
-	public Estudiante(int cedula, String nombre, String direccion, int estrato, double promedio, long ingresos) {
+	public Estudiante(int cedula, String nombre, String direccion, int estrato, double promedio, int ingresos) {
 		super(cedula, nombre, direccion);
 		this.estrato = estrato;
 		this.promedio = promedio;
