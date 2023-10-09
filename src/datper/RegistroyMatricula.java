@@ -40,12 +40,7 @@ public class RegistroyMatricula {
 	public static double valorMatricula(Estudiante estudiante) {
 		int estrat = estudiante.getEstrato();
 		double prom = estudiante.getPromedio();
-		if (estrat <= 3) {
-			double valorm = 0;
-			estudiante.valormatricula = valorm;
-			return valorm;
-		}
-		else if (prom>= 4.5){
+		if (estrat <= 3 || prom>= 4.5) {
 			double valorm = 0;
 			estudiante.valormatricula = valorm;
 			return valorm;
