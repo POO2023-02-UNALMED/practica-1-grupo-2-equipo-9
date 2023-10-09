@@ -1,5 +1,4 @@
 package datper;
-
 public class RegistroyMatricula {
 
 	public String director;
@@ -30,7 +29,7 @@ public class RegistroyMatricula {
 				return "El valor de la fraccion es: "+ valorFraccion;
 			}
 			
-			else if (estudiante.valormatricula== 0) {
+			else if (valMatest == 0) {
 				return "Usted tiene matricula cero y no se puede fraccionar el 0 mijx";
 			}
 		}
@@ -40,11 +39,12 @@ public class RegistroyMatricula {
 	}
 	public static double valorMatricula(Estudiante estudiante) {
 		int estrat = estudiante.getEstrato();
-		if (estrat <= 3 || estudiante.getPromedio()>= 4.5) {
+		double prom = estudiante.getPromedio();
+		if (estrat <= 3 || prom>= 4.5) {
 			double valorm = 0;
 			return valorm;
 		}
-		else if (estrat > 3 || estudiante.getPromedio()< 4.5){
+		else if (estrat > 3 || prom< 4.5){
 			double tasa = 1/2;
 			double valorm = estudiante.ingresos*tasa;
 			return valorm;
