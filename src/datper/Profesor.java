@@ -17,4 +17,5 @@ public class Profesor extends Persona {
 		this.salario = salario;
 	}
 	
+	
 }

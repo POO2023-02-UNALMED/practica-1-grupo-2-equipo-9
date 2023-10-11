@@ -32,7 +32,6 @@ public class RegistroyMatricula {
 	public static String controlMatriculaytarifa(String opcion) {
 		if (opcion == "Informacion Estudiantes") {
 			for (Estudiante estudiante : estudiantes) {
-				RegistroyMatricula.calcularMatricula(estudiante);
 				String cadena = "Estudiante: " + estudiante.nombre+ "\nCréditos: " + estudiante.numerocreditosmatriculados 
 						+"\nMatrícula a pagar: $" + estudiante.valormatricula;
 				return cadena;
