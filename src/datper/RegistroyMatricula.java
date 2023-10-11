@@ -11,6 +11,9 @@ public class RegistroyMatricula {
 	public ArrayList<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
+	public static void agregarEstudiante (Estudiante estudiante) {
+        estudiantes.add(estudiante);
+    }
 	public double getMatbase () {
 		return RegistroyMatricula.MATBASE;
 	}
@@ -37,7 +40,7 @@ public class RegistroyMatricula {
 		}
 		else if (opcion == "Estudiantes con matricula cero") {
 			for (Estudiante estudiante : estudiantes) {
-				if (estudiante.valormatricula == 0) {return "El estudiante: " + estudiante.nombre + "tienen matricula cero"; }
+				if (estudiante.valormatricula == 0) {return "El estudiante: " + estudiante.nombre + "tiene matricula cero"; }
 				else {return "El estudiante: " + estudiante.nombre + " NO posee matricula cero";}
 			}
 		}
