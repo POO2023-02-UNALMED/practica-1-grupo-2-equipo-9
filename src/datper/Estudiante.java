@@ -14,7 +14,6 @@ public class Estudiante extends Persona {
 		this.estrato = estrato;
 		this.promedio = promedio;
 		this.ingresos = ingresos;
-		
 	}
 	
 	public int getEstrato() {

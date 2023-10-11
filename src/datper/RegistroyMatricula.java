@@ -2,56 +2,46 @@ package datper;
 public class RegistroyMatricula {
 
 	public String director;
-	private Persona[] personas;
+	private Estudiante[] estudiantes;
+	private static final double matbase = 100000;
+    private static final double descuento = 0.2;
 	
-	public Persona[] personas() {
-		return personas;
+	public Estudiante[] getEstudiantes() {
+		return estudiantes;
 	}
+	public double getMatbase () {
+		return RegistroyMatricula.matbase;
+	}
+
+	public double calcularMatricula (Estudiante estudiante) {
+        double matriculaSinDescuento = matbase * estudiante.numerocreditosmatriculados;
+        if (estudiante.getPromedio()>= 4.5) {
+        	double matriculaConDescuento = matriculaSinDescuento *descuento;
+        	estudiante.valormatricula = matriculaConDescuento;
+        	return matriculaConDescuento;}
+        else {
+        	estudiante.valormatricula = matriculaSinDescuento;
+        	return matriculaSinDescuento;}
+    }
 	
-	public static String controlMatriculayTarifas(Estudiante estudiante, int opcion) {
-		if (opcion == 1) {
-			double valMatest = RegistroyMatricula.valorMatricula(estudiante);
-			if (valMatest == 0) {
-				estudiante.valormatricula = valMatest;
-				return "Usted posee matricula 0";
-			}
-			else if (valMatest > 0){
-				String cadena = "Su matricula es: "+ valMatest + " por tanto no es beneficiaro de Matricula 0";
-				estudiante.valormatricula = valMatest;
+	public String controlMatriculaytarifa(String opcion) {
+		if (opcion == "Informacion Estudiantes") {
+			for (Estudiante estudiante : estudiantes) {
+				String cadena = "Estudiante: " + estudiante.nombre+ "Créditos: " + estudiante.numerocreditosmatriculados 
+						+"Matrícula a pagar: $" + estudiante.valormatricula;
 				return cadena;
 			}
 		}
-		else if (opcion == 2) {
-			double valMatest = RegistroyMatricula.valorMatricula(estudiante);
-			if (valMatest!= 0 || valMatest >= 100000) {
-				double fraccion = 1/3;
-				double valorFraccion = fraccion*valMatest;
-				return "El valor de la fraccion es: "+ valorFraccion;
-			}
-			
-			else if (valMatest == 0) {
-				return "Usted tiene matricula cero y no se puede fraccionar el 0 mijx";
+		else if (opcion == "Estudiantes con matricula cero") {
+			for (Estudiante estudiante : estudiantes) {
+				if (estudiante.valormatricula == 0) {return "El estudiante: " + estudiante.nombre + "tienen matricula cero"; }
+				else {return "El estudiante: " + estudiante.nombre + "NO posee matricula cero";}
 			}
 		}
-		
-		
-		return "Su informacion ha sido cargada y generada";
+		return "Registro y matricula no tiene respuesta a lo pedido";
 	}
-	public static double valorMatricula(Estudiante estudiante) {
-		int estrat = estudiante.getEstrato();
-		double prom = estudiante.getPromedio();
-		if (estrat <= 3 || prom>= 4.5) {
-			double valorm = 0;
-			estudiante.valormatricula = valorm;
-			return valorm;
-		}
-		else if (estrat > 3 || prom< 4.5){
-			double valorm = estudiante.ingresos*0.5;
-			estudiante.valormatricula = valorm;
-			return valorm;
-		}
-		else {return 0;}
-	}
+	
+	
 	
 	
 }
