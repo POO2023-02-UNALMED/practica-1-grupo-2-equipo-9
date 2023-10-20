@@ -7,14 +7,20 @@ public class Profesor extends Persona {
 	
 	public Profesor(int cedula, String nombre, String direccion, String tipodeafiliacion, long salario) {
 		super(cedula, nombre, direccion);
-		this.tipodeafiliacion = tipodeafiliacion;
+		this.setTipodeafiliacion(tipodeafiliacion);
 		this.salario = salario;
 	}
 	public void setTipoDeAfiliacion(String tda) {
-		this.tipodeafiliacion = tda;
+		this.setTipodeafiliacion(tda);
 	}
 	public void setSalario (long salario) {
 		this.salario = salario;
+	}
+	public String getTipodeafiliacion() {
+		return tipodeafiliacion;
+	}
+	public void setTipodeafiliacion(String tipodeafiliacion) {
+		this.tipodeafiliacion = tipodeafiliacion;
 	}
 	
 	
