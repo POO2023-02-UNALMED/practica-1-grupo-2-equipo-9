@@ -1,9 +1,10 @@
 package gestorAplicacion;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Estudiante extends Persona {
-
+public class Estudiante extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int estrato = 3;
 	private double promedio;
 	public double valormatricula;
@@ -63,4 +64,5 @@ public class Estudiante extends Persona {
 	public String toString() {
 		return "\nNombre: "+ this.nombre + "\nCedula: "+ this.cedula + "\nDireccion: "+ this.direccion;
 	}
+
 }

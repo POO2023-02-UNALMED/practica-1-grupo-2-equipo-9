@@ -1,8 +1,9 @@
 package gestorAplicacion;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Asignatura {
-
+public class Asignatura implements Serializable{
+	private static final long serialVersionUID = 1L;
 	public String nombreasignatura;
 	public int creditos;
 	public String horario;

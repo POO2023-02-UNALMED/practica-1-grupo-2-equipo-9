@@ -1,6 +1,10 @@
 package uiMain;
-import datper.Estudiante;
-import datper.RegistroyMatricula;
+import gestorAplicacion.Asignatura;
+import gestorAplicacion.Estudiante;
+import gestorAplicacion.Grupo;
+import gestorAplicacion.Persona;
+import gestorAplicacion.Profesor;
+import gestorAplicacion.RegistroyMatricula;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,7 +13,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import Serializacion.*;
+import baseDatos.Serializador;
+import baseDatos.Deserializador;
+
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -19,8 +25,9 @@ public class Main {
             System.out.println("1. Agregar Estudiante");
             System.out.println("2. Buscar Estudiante");
             System.out.println("3. Informacion Estudiantes");
-            System.out.println("4. Crear nueva asignatura por defecto");
-            System.out.println("5. Salir");
+            System.out.println("4. Estudiantes con matricula cero");
+            System.out.println("5. Crear nueva asignatura por defecto"); 
+            System.out.println("6. Salir");
             System.out.print("Selecciona una opción: ");
 
             int choice = scanner.nextInt();
@@ -54,8 +61,10 @@ public class Main {
             	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Informacion Estudiantes"));
             	break;
             case 4:
-            	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Crear nueva asignatura por defecto"));
+            	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Estudiantes con matricula cero"));
             case 5:
+            	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Crear nueva asignatura por defecto"));
+            case 6:
                 System.out.println("Saliendo del sistema.");
                 System.exit(0);
             default:

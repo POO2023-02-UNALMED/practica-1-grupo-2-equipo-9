@@ -1,10 +1,15 @@
 package gestorAplicacion;
 
-public class Profesor extends Persona {
+import java.util.ArrayList;
+import java.io.Serializable;
+
+public class Profesor extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public int horasdeclasesemanal;
 	private String tipodeafiliacion;
 	private long salario;
-	
+	private static ArrayList<Profesor> profesoresconlau = new ArrayList<Profesor>();
+		
 	public Profesor(int cedula, String nombre, String direccion, String tipodeafiliacion, long salario) {
 		super(cedula, nombre, direccion);
 		this.setTipodeafiliacion(tipodeafiliacion);
@@ -22,6 +27,21 @@ public class Profesor extends Persona {
 	public void setTipodeafiliacion(String tipodeafiliacion) {
 		this.tipodeafiliacion = tipodeafiliacion;
 	}
-	
-	
+
+	public int getHorasdeclasesemanal() {
+		return horasdeclasesemanal;
+	}
+	public void setHorasdeclasesemanal(int horasdeclasesemanal) {
+		this.horasdeclasesemanal = horasdeclasesemanal;
+	}
+	public long getSalario() {
+		return salario;
+	}
+
+	public static ArrayList<Profesor> getProfesoresconlau() {
+		return profesoresconlau;
+	}
+	public static void setProfesoresconlau(ArrayList<Profesor> profesoresconlau) {
+		Profesor.profesoresconlau = profesoresconlau;
+	}
 }

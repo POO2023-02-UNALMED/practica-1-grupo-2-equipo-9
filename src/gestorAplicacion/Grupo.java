@@ -1,14 +1,18 @@
 package gestorAplicacion;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Grupo {
+
+public class Grupo implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Asignatura asignatura;	
 	private int numero;
     private Profesor profesor;
     private ArrayList<String> horario; 
     private int cupos;
     private ArrayList<Estudiante> estudiantes;
+    private static ArrayList<Grupo> grupostotales = new ArrayList<Grupo>();
     
-    public Grupo(Asignatura asignatura, int numero, Profesor profesor, ArrayList<String> horario, int cupos,
+ 	public Grupo(Asignatura asignatura, int numero, Profesor profesor, ArrayList<String> horario, int cupos,
 			ArrayList<Estudiante> estudiantes) {
 		super();
 		this.asignatura = asignatura;
@@ -17,6 +21,7 @@ public class Grupo {
 		this.horario = horario;
 		this.cupos = cupos;
 		this.estudiantes = estudiantes;
+		grupostotales.add(this);
 	}
     
     public Grupo(Asignatura asignatura, int numero, Profesor profesor, ArrayList<String> horario, int cupos){
@@ -73,6 +78,15 @@ public class Grupo {
 	public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
+	   
+    public static ArrayList<Grupo> getGrupostotales() {
+		return grupostotales;
+	}
+
+	public void setGrupostotales(ArrayList<Grupo> grupostotales) {
+		Grupo.grupostotales = grupostotales;
+	}
+
 
 
 }

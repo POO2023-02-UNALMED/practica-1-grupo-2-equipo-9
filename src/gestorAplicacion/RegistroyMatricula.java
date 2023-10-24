@@ -1,9 +1,10 @@
 package gestorAplicacion;
 import java.util.ArrayList;
+
 public class RegistroyMatricula {
 
 	public String director;
-	public static ArrayList<Estudiante> estudiantes = new ArrayList<>();
+	public static ArrayList<Estudiante> estudiantes = Estudiante.estudiantesregistrados;
 	
     
 	public ArrayList<Estudiante> getEstudiantes() {
