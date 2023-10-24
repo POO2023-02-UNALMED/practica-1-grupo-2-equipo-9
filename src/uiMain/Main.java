@@ -1,14 +1,69 @@
 package uiMain;
 import datper.Estudiante;
 import datper.RegistroyMatricula;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
 import Serializacion.*;
 public class Main {
 	public static void main(String[] args) {
-		Estudiante estudiante1 = new Estudiante(101822, "Ramiro Rancio Ronaldo", "Calle 12+1 #6-9", 5 , 2.0, 1000000);
-		RegistroyMatricula.agregarEstudiante(estudiante1);
-		System.out.println(RegistroyMatricula.controlMatriculaytarifa("Informacion Estudiantes"));
+		Scanner scanner = new Scanner(System.in);
 	
+		while (true) {
+            System.out.println("Sistema de Información Académica");
+            System.out.println("1. Agregar Estudiante");
+            System.out.println("2. Buscar Estudiante");
+            System.out.println("3. Informacion Estudiantes");
+            System.out.println("4. Crear nueva asignatura por defecto");
+            System.out.println("5. Salir");
+            System.out.print("Selecciona una opción: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); 
+            switch (choice) {
+            case 1:
+                System.out.print("Ingrese el Nombre del estudiante: ");
+                String nombre = scanner.nextLine();
+                System.out.print("Ingresa la Direccion del estudiante: ");
+                String direccion = scanner.nextLine();
+                System.out.print("Ingresa la cedula del estudiante: ");
+                int cc = scanner.nextInt();
+                scanner.nextLine();
+
+                Estudiante estudiante = new Estudiante(cc, nombre, direccion);
+                RegistroyMatricula.agregarEstudiante(estudiante);
+                System.out.println("El estudiante: "+ estudiante.toString()+" fue agregado con exito.");
+                break;
+            case 2:
+                System.out.print("Ingrese la cedula del estudiante a buscar: ");
+                String cedula = scanner.nextLine();
+                int numCC = Integer.parseInt(cedula);
+                boolean encontrarestudiante = Estudiante.encontrarEstudianteconCC(numCC);
+                if (encontrarestudiante == true) {
+                    System.out.println("Estudiante encontrado");
+                } else {
+                    System.out.println("Estudiante no encontrado.");
+                }
+                break;
+            case 3:
+            	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Informacion Estudiantes"));
+            	break;
+            case 4:
+            	System.out.println(RegistroyMatricula.controlMatriculaytarifa("Crear nueva asignatura por defecto"));
+            case 5:
+                System.out.println("Saliendo del sistema.");
+                System.exit(0);
+            default:
+                System.out.println("Opción no válida. Por favor, selecciona una opción válida.");
+        }
+		}
 	}
+	
 	public static void serializarAsignatura(Asignatura asignatura, String archivo) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
             oos.writeObject(asignatura);
@@ -91,7 +146,7 @@ public class Main {
             return null;
         }
     }
-	public static void serializarRegistroyMatricula(RegistroyMatricula registroymatricula String archivo) {
+	public static void serializarRegistroyMatricula(RegistroyMatricula registroymatricula, String archivo) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
             oos.writeObject(registroymatricula);
         } catch (IOException e) {
@@ -101,7 +156,7 @@ public class Main {
 
     public static RegistroyMatricula deserializarRegistroyMatricula(String archivo) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-            return (registroymatricula) ois.readObject();
+            return (RegistroyMatricula) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return null;

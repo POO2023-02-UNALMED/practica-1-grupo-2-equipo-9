@@ -1,4 +1,4 @@
-package datper;
+package gestorAplicacion;
 
 public class Persona {
 

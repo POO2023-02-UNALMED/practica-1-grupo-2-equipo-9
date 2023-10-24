@@ -1,4 +1,4 @@
-package datper;
+package gestorAplicacion;
 import java.util.ArrayList;
 public class RegistroyMatricula {
 
@@ -30,7 +30,10 @@ public class RegistroyMatricula {
 				else  {return "El estudiante: " + estudiante.nombre + " NO posee matricula cero";}
 			}
 		}
-		
+		else if (opcion == "Crear nueva asignatura por defecto") {
+			Asignatura asignaturapordefecto = new Asignatura("Basicas", 3,"LM10-12",null);
+			return asignaturapordefecto.toString();
+		}
 		return "Registro y matricula no tiene respuesta a lo pedido";
 	}
 	

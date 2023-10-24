@@ -1,4 +1,4 @@
-package datper;
+package gestorAplicacion;
 import java.util.ArrayList;
 
 public class Asignatura {
@@ -70,5 +70,9 @@ public class Asignatura {
     	
     	return grupo;
     }
+	public String toString() {
+		return "Estos son los datos esenciales de la materia: "+ "\n1. Nombre: "+ this.nombreasignatura + "\n2. Creditos: "+ this.creditos
+				+"\n3. Horario: "+ this.horario+"\n4. Profesor: "+this.profesor;
+	}
 	
 }

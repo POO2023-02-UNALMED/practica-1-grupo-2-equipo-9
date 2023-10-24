@@ -1,4 +1,4 @@
-package datper;
+package gestorAplicacion;
 import java.util.ArrayList;
 public class Grupo {
 	private Asignatura asignatura;	
